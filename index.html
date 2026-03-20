@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online shop | Studenti</title>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1>Mini Shop Studenti</h1>
+        <p class="subtitle">Catalogo, carrello e checkout base</p>
+      </header>
+
+      <section class="panel">
+        <h2>Filtri catalogo</h2>
+        <div class="filters">
+          <button id="btnAll" type="button">Tutti</button>
+          <button id="btnAvailable" type="button">Disponibili</button>
+          <button id="btnPremium" type="button">Premium</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Catalogo prodotti</h2>
+        <div id="catalogo" class="grid"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Carrello</h2>
+        <div id="carrelloLista"></div>
+        <p>Subtotale: <span id="subtotale">€0.00</span></p>
+        <p>Sconto: <span id="sconto"> €0.00</span></p>
+        <p>Totale finale: <span id="totaleFinale"> €0.00</span></p>
+      </section>
+
+      <section class="panel">
+        <h2>Dati cliente</h2>
+        <form id="checkoutForm">
+          <input type="text" id="nomeCliente" placeholder="Nome cliente" />
+          <input type="email" id="emailCliente" placeholder="Email cliente" />
+          <input type="number" id="etaCliente" placeholder="Età" />
+          <button type="submit">Conferma ordine</button>
+        </form>
+        <p id="msgErrore" class="errore hidden"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Riepilogo finale</h2>
+        <div id="riepilogo"></div>
+      </section>
+    </div>
+
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>

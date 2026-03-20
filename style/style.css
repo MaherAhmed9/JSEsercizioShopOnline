@@ -55,3 +55,7 @@ button:disabled {
     background-color: gray;
     cursor: not-allowed;
 }
+
+a {
+    color: #4f6ef7;
+}

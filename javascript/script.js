@@ -192,6 +192,7 @@ function renderRiepilogo() {
 
     if (nome.length >= 3 && emailU.includes("@") && eta >= 18) {
         riepilogo.innerHTML = "";
+        msgErrore.classList.add("hidden");
 
         const ordine = document.createElement("p");
         const cliente = document.createElement("p");

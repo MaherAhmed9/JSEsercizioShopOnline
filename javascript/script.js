@@ -82,7 +82,7 @@ function aggiungiAlCarrello(idProdotto) {
         carrello.push(prodotto);
     }
 
-    renderCarello();
+    renderCarello(carrello);
 }
 
 function calcolaSubtotale() {
@@ -148,17 +148,44 @@ function renderCatalogo(listaProdotti) {
         }
         btnCompra.setAttribute("onclick", `aggiungiAlCarrello(${prodotto.id})`);
 
-        div.append(nomeProdotto);
-        div.append(prezzoProdotto);
-        div.append(isDisponibile);
-        div.append(btnCompra);
-        catalogo.append(div);
+        div.appendChild(nomeProdotto);
+        div.appendChild(prezzoProdotto);
+        div.appendChild(isDisponibile);
+        div.appendChild(btnCompra);
+
+        catalogo.appendChild(div);
     }
 }
 
 renderCatalogo(prodotti);
 
-function renderCarello() {
+function renderCarello(listaProdotti) {
+    carrelloLista.innerHTML = "";
+
+    for (let prodotto of listaProdotti) {
+        const div = document.createElement("div");
+        const nomeProdotto = document.createElement("p");
+        const prezzoProdotto = document.createElement("p");
+        const btnRimuovi = document.createElement("button");
+
+        nomeProdotto.textContent = prodotto.nome;
+        prezzoProdotto.textContent = formattaPrezzo(prodotto.prezzo);
+        btnRimuovi.textContent = "Rimuovi";
+        if (prodotto.disponibile !== true) {
+            btnRimuovi.disabled = true;
+        }
+        btnRimuovi.addEventListener("click", function () {
+            carrello.pop(prodotto.id);
+            renderCarello(listaProdotti);
+        });
+
+        div.appendChild(nomeProdotto);
+        div.appendChild(prezzoProdotto);
+        div.appendChild(btnRimuovi);
+
+        carrelloLista.appendChild(div);
+    }
+
     subtotale.textContent = formattaPrezzo(calcolaSubtotale());
     sconto.textContent = formattaPrezzo(calcolaSconto());
     totaleFinale.textContent = formattaPrezzo(calcolaTotaleFinale());
